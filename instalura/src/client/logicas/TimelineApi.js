@@ -1,11 +1,12 @@
 import {listagem,comentario,like,notifica} from '../actions/actionCreator';
+import 'isomorphic-fetch';
 
 export default class TimelineApi {
     static lista(urlPerfil){
       return dispatch => {
-        fetch(urlPerfil)
+        return fetch(urlPerfil)
         .then(response => response.json())
-        .then(fotos => {         
+        .then(fotos => {    
             dispatch(listagem(fotos));
             return fotos;
         });
